@@ -2,7 +2,7 @@ import random
 import sys
 import os
 
-CHOICES = ("rock", "paper", "scissors")
+CHOICES = ("r", "p", "s")
 
 
 def get_computer_choice():
@@ -11,7 +11,7 @@ def get_computer_choice():
 
 def get_player_choice():
     while True:
-        playerChoice = input("Choose rock/paper/scissors: ")
+        playerChoice = input("Choose rock/paper/scissors(r/p/s): ")
         if playerChoice in CHOICES:
             return playerChoice
         print("Invalid choice. Try again.")
@@ -22,9 +22,9 @@ def decide_winner(player, comp):
     if player == comp:
         return "tie"
     wins = {
-        ("rock", "scissors"),
-        ("scissors", "paper"),
-        ("paper", "rock"),
+        ("r", "s"),
+        ("s", "p"),
+        ("p", "r"),
     }
     return "player" if (player, comp) in wins else "computer"
 
