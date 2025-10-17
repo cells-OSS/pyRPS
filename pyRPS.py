@@ -14,8 +14,10 @@ def get_player_choice():
         playerChoice = input("Choose rock/paper/scissors(r/p/s): ")
         if playerChoice in CHOICES:
             return playerChoice
+        if playerChoice.lower() == "finish":
+            return None
         print("Invalid choice. Try again.")
-        input("Press any key to continue...")
+        input("Press Enter to continue...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
 
 
@@ -50,7 +52,13 @@ def main():
             print("Computer wins this round.")
         print(f"Score — You: {score_p}  Computer: {score_c}\n")
     print("Thanks for playing. Final score:", score_p, "-", score_c)
+    input("Press any key to exit...")
+    sys.exit()
 
 
 if __name__ == "__main__":
+    welcomeMessage = """============Welcome to PyRPS - Rock Paper Scissors!============
+TIP: Type 'finish' at any time to end the game.
+    """
+    print(welcomeMessage)
     main()
