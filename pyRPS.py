@@ -15,6 +15,7 @@ def get_player_choice():
         if playerChoice in CHOICES:
             return playerChoice
         print("Invalid choice. Try again.")
+        input("Press any key to continue...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
 
 
