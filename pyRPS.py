@@ -25,6 +25,13 @@ def get_computer_choice(player_choice=None):
                 return("s")
             if player_choice == 's':
                 return("r")
+        if r == "user":
+            if player_choice == 'r':
+                return("s")
+            if player_choice == 'p':
+                return("r")
+            if player_choice == 's':
+                return("p")
             
     return random.choice(CHOICES)
 
