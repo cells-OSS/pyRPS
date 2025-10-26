@@ -5,28 +5,39 @@ import os
 CHOICES = ("r", "p", "s")
 
 if os.name == "nt":
-    config_dir = os.path.join(os.getenv("APPDATA"), "pyndcrypt")
+    config_dir = os.path.join(os.getenv("APPDATA"), "pyRPS")
 else:
-    config_dir = os.path.expanduser("~/.config/pyndcrypt")
+    config_dir = os.path.expanduser("~/.config/pyRPS")
 
 os.makedirs(config_dir, exist_ok=True)
 
 rigging_config_path = os.path.join(config_dir, "rigging.conf")
 
-def get_computer_choice():
+def get_computer_choice(player_choice=None):
+    if os.path.exists(rigging_config_path):
+        with open(rigging_config_path, "rb") as f:
+            r = f.read().decode()
+
+        if r == "bot":
+            if player_choice == 'r':
+                return("p")
+            if player_choice == 'p':
+                return("s")
+            if player_choice == 's':
+                return("r")
+            
     return random.choice(CHOICES)
 
 
 def get_player_choice():
     while True:
-        playerChoice = input("Choose rock/paper/scissors(r/p/s): ")
+        playerChoice = input("Choose rock/paper/scissors(r/p/s): ").lower()
         if playerChoice in CHOICES:
             return playerChoice
         if playerChoice.lower() == "finish":
             return None
         print("Invalid choice. Try again.")
         input("Press Enter to continue...")
-        os.execv(sys.executable, [sys.executable] + sys.argv)
 
 
 def decide_winner(player, comp):
@@ -47,7 +58,7 @@ def main():
         player = get_player_choice()
         if player is None:
             break
-        comp = get_computer_choice()
+        comp = get_computer_choice(player)
         print(f"You: {player}  |  Computer: {comp}")
         result = decide_winner(player, comp)
         if result == "tie":
