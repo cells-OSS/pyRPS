@@ -67,13 +67,13 @@ def main():
 if __name__ == "__main__":
 
     welcomeMessage = """============Welcome to PyRPS - Rock Paper Scissors!============
-    1 = Play
-    2 = Settings (Coming Soon...)
+1 = Play
+2 = Settings
 TIP: Type 'finish' at any time to end the game.
     """
     print(welcomeMessage)
 
-    chooseOption = input("Which option would you like to choose(1/2)?")
+    chooseOption = input("Which option would you like to choose(1/2)?: ")
     
     if chooseOption == '1':
         main()
@@ -88,7 +88,7 @@ TIP: Type 'finish' at any time to end the game.
 """
 print(settingsMenu)
 
-settingsOption = input("Which Setting would you like to change(1/2/3/4)?")
+settingsOption = input("Which Setting would you like to change(1/2/3/4)?: ")
 
 if settingsOption == '1':
     riggingMenu = """
@@ -97,7 +97,7 @@ if settingsOption == '1':
 2 = Make the user win
 """
 
-    riggingOption = input("Who do you want to win(1/2)?")
+    riggingOption = input("Who do you want to win(1/2)?: ")
 
     if riggingOption == '1':
         config_path = os.path.join(config_dir, "rigging.conf")
