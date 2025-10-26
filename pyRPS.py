@@ -57,8 +57,16 @@ def main():
 
 
 if __name__ == "__main__":
+
     welcomeMessage = """============Welcome to PyRPS - Rock Paper Scissors!============
+    1 = Play
+    2 = Settings (Coming Soon...)
 TIP: Type 'finish' at any time to end the game.
     """
     print(welcomeMessage)
-    main()
+
+    chooseOption = input("Which option would you like to choose(1/2)?")
+    
+    if chooseOption == '1':
+        main()
+
