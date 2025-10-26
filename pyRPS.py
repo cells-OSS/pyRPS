@@ -4,6 +4,14 @@ import os
 
 CHOICES = ("r", "p", "s")
 
+if os.name == "nt":
+    config_dir = os.path.join(os.getenv("APPDATA"), "pyndcrypt")
+else:
+    config_dir = os.path.expanduser("~/.config/pyndcrypt")
+
+os.makedirs(config_dir, exist_ok=True)
+
+rigging_config_path = os.path.join(config_dir, "Rigging.conf")
 
 def get_computer_choice():
     return random.choice(CHOICES)
@@ -79,3 +87,6 @@ TIP: Type 'finish' at any time to end the game.
 4 = Figlet welcome message (Comming Soon...)
 """
 print(settingsMenu)
+
+settingsOption = input("Which Setting would you like to change(1/2/3/4)?")
+
