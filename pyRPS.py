@@ -104,7 +104,16 @@ if settingsOption == '1':
         config_path = os.path.join(config_dir, "rigging.conf")
 
         with open(config_path, "wb") as f:
-            f.write("True".encode())
+            f.write("bot".encode())
+        print("Rigging has been done!")
+        input("Press Enter to continue...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
+
+    if riggingOption == '2':
+        config_path = os.path.join(config_dir, "rigging.conf")
+
+        with open(config_path, "wb") as f:
+            f.write("user".encode())
         print("Rigging has been done!")
         input("Press Enter to continue...")
         os.execv(sys.executable, [sys.executable] + sys.argv)
