@@ -96,6 +96,7 @@ if settingsOption == '1':
 1 = Make the bot win
 2 = Make the user win
 """
+    print(riggingMenu)
 
     riggingOption = input("Who do you want to win(1/2)?: ")
 
