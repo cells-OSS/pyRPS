@@ -11,7 +11,7 @@ else:
 
 os.makedirs(config_dir, exist_ok=True)
 
-rigging_config_path = os.path.join(config_dir, "Rigging.conf")
+rigging_config_path = os.path.join(config_dir, "rigging.conf")
 
 def get_computer_choice():
     return random.choice(CHOICES)
@@ -90,3 +90,20 @@ print(settingsMenu)
 
 settingsOption = input("Which Setting would you like to change(1/2/3/4)?")
 
+if settingsOption == '1':
+    riggingMenu = """
+==================RIGGING==================
+1 = Make the bot win
+2 = Make the user win
+"""
+
+    riggingOption = input("Who do you want to win(1/2)?")
+
+    if riggingOption == '1':
+        config_path = os.path.join(config_dir, "rigging.conf")
+
+        with open(config_path, "wb") as f:
+            f.write("True".encode())
+        print("Rigging has been done!")
+        input("Press Enter to continue...")
+        os.execv(sys.executable, [sys.executable] + sys.argv)
