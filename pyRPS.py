@@ -70,3 +70,12 @@ TIP: Type 'finish' at any time to end the game.
     if chooseOption == '1':
         main()
 
+    if chooseOption == '2':
+        settingsMenu = """
+==================SETTINGS==================
+1 = Rigging
+2 = Change welcome message (Coming Soon...)
+3 = Reset welcome message (Comming Soon...)
+4 = Figlet welcome message (Comming Soon...)
+"""
+print(settingsMenu)
